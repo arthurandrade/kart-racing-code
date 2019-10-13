@@ -1,0 +1,41 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["jest"],
+  "env": {
+    "node": true,
+    "jest/globals": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "func-names": "off",
+    "global-require": "off",
+    "node/no-missing-require": "off",
+    "import/no-unresolved": "off",
+    "no-param-reassign": "off",
+    "no-restricted-syntax": "off",
+    "no-return-await": "off",
+    "no-prototype-builtins": "off",
+    "newline-before-return": "error",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "comma-dangle": "off",
+    "no-console": "off",
+    "import/no-dynamic-require": "off",
+    "eol-last": "error",
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }]
+  }
+}
