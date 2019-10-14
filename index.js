@@ -1,12 +1,12 @@
-const Race = require('./src/kart/Race');
-const { recoverLaps, writeFile } = require('./src/helper');
+const Race = require('./src/service/RaceService');
+const FileHelper = require('./src/helper/FileHelper');
 
 function init() {
-  const laps = recoverLaps('race_log.txt');
-  const race = new Race({ laps });
+  const race = new Race({ fileHandler: new FileHelper() });
+  race.loadData('race_log.txt');
   const result = race.getResult();
 
-  writeFile(result);
+  race.save('race_out.csv', result);
 }
 
 init();

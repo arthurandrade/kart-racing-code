@@ -5,34 +5,34 @@ const lapsString =
   '23:49:11.075      002 – K.RAIKKONEN                       1     1:04.108                        43,408';
 const resultLaps = [
   {
-    bestTime: 62.769,
+    bestLapTime: 62.769,
     totalTime: 251.578,
     totalLaps: 4,
     totalVelocity: 176.983,
     pilotId: '038',
     pilotName: 'F.MASS',
     bestLap: 3,
-    averageTime: 44.24575,
+    avgLapSpeed: 44.24575,
   },
   {
-    bestTime: 63.716,
+    bestLapTime: 63.716,
     totalTime: 256.08,
     totalLaps: 4,
     totalVelocity: 173.87199999999999,
     pilotId: '033',
     pilotName: 'R.BARRICHELLO',
     bestLap: 3,
-    averageTime: 43.467999999999996,
+    avgLapSpeed: 43.467999999999996,
   },
   {
-    bestTime: 63.076,
+    bestLapTime: 63.076,
     totalTime: 255.153,
     totalLaps: 4,
     totalVelocity: 174.50900000000001,
     pilotId: '002',
     pilotName: 'K.RAIKKONEN',
     bestLap: 4,
-    averageTime: 43.627250000000004,
+    avgLapSpeed: 43.627250000000004,
   },
 ];
 
@@ -72,50 +72,50 @@ const laps = [
 ];
 const sortedResults = [
   {
-    bestTime: 62.769,
+    bestLapTime: 62.769,
     totalTime: 251.578,
     totalLaps: 4,
     totalVelocity: 176.983,
     pilotId: '038',
     pilotName: 'F.MASS',
     bestLap: 3,
-    averageTime: 44.24575,
+    avgLapSpeed: 44.24575,
   },
   {
-    bestTime: 63.076,
+    bestLapTime: 63.076,
     totalTime: 255.153,
     totalLaps: 4,
     totalVelocity: 174.50900000000001,
     pilotId: '002',
     pilotName: 'K.RAIKKONEN',
     bestLap: 4,
-    averageTime: 43.627250000000004,
+    avgLapSpeed: 43.627250000000004,
   },
   {
-    bestTime: 63.716,
+    bestLapTime: 63.716,
     totalTime: 256.08,
     totalLaps: 4,
     totalVelocity: 173.87199999999999,
     pilotId: '033',
     pilotName: 'R.BARRICHELLO',
     bestLap: 3,
-    averageTime: 43.467999999999996,
+    avgLapSpeed: 43.467999999999996,
   },
 ];
 
 const bestLap = {
-  bestTime: 62.769,
+  bestLapTime: 62.769,
   totalTime: 251.578,
   totalLaps: 4,
   totalVelocity: 176.983,
   pilotId: '038',
   pilotName: 'F.MASS',
   bestLap: 3,
-  averageTime: 44.24575,
+  avgLapSpeed: 44.24575,
 };
 
-const groupedLapsByPilot = {
-  '038': [
+const groupedLapsByPilot = [
+  [
     {
       time: '23:49:08.277',
       pilotId: '038',
@@ -149,7 +149,7 @@ const groupedLapsByPilot = {
       velocity: 44.321,
     },
   ],
-  '033': [
+  [
     {
       time: '23:49:10.858',
       pilotId: '033',
@@ -183,7 +183,7 @@ const groupedLapsByPilot = {
       velocity: 43.474,
     },
   ],
-};
+];
 module.exports = {
   lapsString,
   resultLaps,
