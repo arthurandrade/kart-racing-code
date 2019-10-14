@@ -1,9 +1,9 @@
-const { recoverLaps } = require('./../../src/helper');
-const Race = require('./../../src/kart/Race');
+const FileHelper = require('./../../src/helper/FileHelper');
+const Race = require('./../../src/service/RaceService');
 
 const processRace = () => {
-  const laps = recoverLaps('race_log.txt');
-  const race = new Race({ laps });
+  const race = new Race({ fileHandler: new FileHelper() });
+  race.loadData('race_log.txt');
 
   return race.getResult();
 };
