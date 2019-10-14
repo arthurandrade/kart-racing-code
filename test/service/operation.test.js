@@ -2,16 +2,16 @@ const {
   formatResult,
   getFasterLap,
   getResultByPilot,
-  groupLapByPilot,
+  groupLapsByPilot,
   sortPilot,
-} = require('./../../src/kart/operation');
+} = require('../../src/service/utils/operation');
 const {
   resultLaps,
   laps,
   sortedResults,
   bestLap,
   groupedLapsByPilot,
-} = require('./../mock');
+} = require('../mock');
 
 describe('testing operations functions', () => {
   test('should return sorted pilot list', () => {
@@ -25,27 +25,9 @@ describe('testing operations functions', () => {
   });
 
   test('should return grouped Laps By Pilot', () => {
-    const groupedLapsByPilotData = groupLapByPilot(laps);
-    expect(groupedLapsByPilotData).toEqual({
-      '033': [
-        {
-          lap: 1,
-          lapTime: 64.352,
-          pilotId: '033',
-          pilotName: 'R.BARRICHELLO',
-          time: '23:49:10.858',
-          velocity: 43.243,
-        },
-        {
-          lap: 2,
-          lapTime: 64.002,
-          pilotId: '033',
-          pilotName: 'R.BARRICHELLO',
-          time: '23:50:14.860',
-          velocity: 43.48,
-        },
-      ],
-      '038': [
+    const groupedLapsByPilotData = groupLapsByPilot(laps);
+    expect(groupedLapsByPilotData).toEqual([
+      [
         {
           lap: 1,
           lapTime: 62.852,
@@ -63,15 +45,33 @@ describe('testing operations functions', () => {
           velocity: 44.053,
         },
       ],
-    });
+      [
+        {
+          lap: 1,
+          lapTime: 64.352,
+          pilotId: '033',
+          pilotName: 'R.BARRICHELLO',
+          time: '23:49:10.858',
+          velocity: 43.243,
+        },
+        {
+          lap: 2,
+          lapTime: 64.002,
+          pilotId: '033',
+          pilotName: 'R.BARRICHELLO',
+          time: '23:50:14.860',
+          velocity: 43.48,
+        },
+      ],
+    ]);
   });
   test('should format result', () => {
     const formatedResult = formatResult(sortedResults, bestLap);
     expect(formatedResult).toEqual([
       {
-        averageTime: '44.246',
+        avgLapSpeed: '44,246',
         bestLap: 3,
-        bestTime: '1:2.769',
+        bestLapTime: '1:2.769',
         finishPosition: 1,
         isFesterLap: true,
         pilotId: '038',
@@ -82,9 +82,9 @@ describe('testing operations functions', () => {
         totalVelocity: '2:56.983',
       },
       {
-        averageTime: '43.627',
+        avgLapSpeed: '43,627',
         bestLap: 4,
-        bestTime: '1:3.076',
+        bestLapTime: '1:3.076',
         finishPosition: 2,
         isFesterLap: false,
         pilotId: '002',
@@ -95,9 +95,9 @@ describe('testing operations functions', () => {
         totalVelocity: '2:54.509',
       },
       {
-        averageTime: '43.468',
+        avgLapSpeed: '43,468',
         bestLap: 3,
-        bestTime: '1:3.716',
+        bestLapTime: '1:3.716',
         finishPosition: 3,
         isFesterLap: false,
         pilotId: '033',
@@ -112,9 +112,9 @@ describe('testing operations functions', () => {
   test('should return best lap', () => {
     const bestLapResult = getFasterLap(sortedResults);
     expect(bestLapResult).toEqual({
-      averageTime: '44.246',
+      avgLapSpeed: '44,246',
       bestLap: 3,
-      bestTime: '1:2.769',
+      bestLapTime: '1:2.769',
       finishPosition: 1,
       isFesterLap: true,
       pilotId: '038',
@@ -130,9 +130,9 @@ describe('testing operations functions', () => {
     const resultByPilot = getResultByPilot(groupedLapsByPilot);
     expect(resultByPilot).toEqual([
       {
-        averageTime: 44.24575,
+        avgLapSpeed: 44.24575,
         bestLap: 3,
-        bestTime: 62.769,
+        bestLapTime: 62.769,
         pilotId: '038',
         pilotName: 'F.MASS',
         totalLaps: 4,
@@ -140,9 +140,9 @@ describe('testing operations functions', () => {
         totalVelocity: 176.983,
       },
       {
-        averageTime: 43.467999999999996,
+        avgLapSpeed: 43.467999999999996,
         bestLap: 3,
-        bestTime: 63.716,
+        bestLapTime: 63.716,
         pilotId: '033',
         pilotName: 'R.BARRICHELLO',
         totalLaps: 4,

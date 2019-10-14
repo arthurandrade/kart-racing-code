@@ -1,4 +1,4 @@
-const { convertNumberToString, parseLaps } = require('./../../src/helper');
+const { convertNumberToString, parseLaps } = require('../../src/helper');
 const { lapsString } = require('./../mock');
 
 describe('testing helpers functions', () => {
