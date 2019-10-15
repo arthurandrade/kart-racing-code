@@ -1,6 +1,6 @@
 const {
   groupLapsByPilot,
-  getResultByPilot,
+  createResultByPilot,
   sortPilot,
   formatRaceResult,
   getFasterLap,
@@ -24,7 +24,7 @@ module.exports = class RaceService {
 
   getResult() {
     const groupedLapsByPilot = groupLapsByPilot(this.laps);
-    const resultLapsByPilot = getResultByPilot(groupedLapsByPilot);
+    const resultLapsByPilot = createResultByPilot(groupedLapsByPilot);
     const sortedResult = sortPilot(resultLapsByPilot);
     const bestLap = getFasterLap(sortedResult);
 

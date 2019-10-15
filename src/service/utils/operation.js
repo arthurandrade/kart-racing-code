@@ -21,7 +21,7 @@ const orderAscByLap = (a, b) => {
 
   return -1;
 };
-const getResultByPilot = pilots => {
+const createResultByPilot = pilots => {
   const results = [];
 
   for (const pilot of pilots) {
@@ -78,10 +78,7 @@ const formatRaceResult = (positions, festerLap) => {
       p.totalTime - totalTimeFirstPilot,
     );
     p.totalTime = convertNumberToString(p.totalTime);
-    p.avgLapSpeed = p.avgLapSpeed
-      .toFixed(3)
-      .toString()
-      .replace('.', ',');
+    p.avgLapSpeed = p.avgLapSpeed.toFixed(3).toString();
     p.bestLapTime = convertNumberToString(p.bestLapTime);
     p.isFesterLap = festerLap.pilotId === p.pilotId;
 
@@ -97,7 +94,7 @@ const getFasterLap = positions => {
 
 module.exports = {
   groupLapsByPilot,
-  getResultByPilot,
+  createResultByPilot,
   sortPilot,
   getFasterLap,
   formatRaceResult,

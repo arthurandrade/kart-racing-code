@@ -1,7 +1,7 @@
 const {
   formatRaceResult,
   getFasterLap,
-  getResultByPilot,
+  createResultByPilot,
   groupLapsByPilot,
   sortPilot,
 } = require('../../src/service/utils/operation');
@@ -69,7 +69,7 @@ describe('testing operations functions', () => {
     const formatedResult = formatRaceResult(sortedResults, bestLap);
     expect(formatedResult).toEqual([
       {
-        avgLapSpeed: '44,246',
+        avgLapSpeed: '44.246',
         bestLap: 3,
         bestLapTime: '1:2.769',
         finishPosition: 1,
@@ -81,7 +81,7 @@ describe('testing operations functions', () => {
         totalTime: '4:11.578',
       },
       {
-        avgLapSpeed: '43,627',
+        avgLapSpeed: '43.627',
         bestLap: 4,
         bestLapTime: '1:3.076',
         finishPosition: 2,
@@ -93,7 +93,7 @@ describe('testing operations functions', () => {
         totalTime: '4:15.153',
       },
       {
-        avgLapSpeed: '43,468',
+        avgLapSpeed: '43.468',
         bestLap: 3,
         bestLapTime: '1:3.716',
         finishPosition: 3,
@@ -109,7 +109,7 @@ describe('testing operations functions', () => {
   test('should return best lap', () => {
     const bestLapResult = getFasterLap(sortedResults);
     expect(bestLapResult).toEqual({
-      avgLapSpeed: '44,246',
+      avgLapSpeed: '44.246',
       bestLap: 3,
       bestLapTime: '1:2.769',
       finishPosition: 1,
@@ -123,7 +123,7 @@ describe('testing operations functions', () => {
   });
 
   test('should return result by pilot', () => {
-    const resultByPilot = getResultByPilot(groupedLapsByPilot);
+    const resultByPilot = createResultByPilot(groupedLapsByPilot);
     expect(resultByPilot).toEqual([
       {
         avgLapSpeed: 44.24575,
