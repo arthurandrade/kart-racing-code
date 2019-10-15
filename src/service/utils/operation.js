@@ -42,7 +42,7 @@ const getResultByPilot = pilots => {
 
     const { totalVelocity, totalLaps } = bestOfPilot;
     bestOfPilot.avgLapSpeed = totalVelocity / totalLaps;
-
+    delete bestOfPilot.totalVelocity;
     results.push(bestOfPilot);
   }
 
@@ -77,7 +77,6 @@ const formatResult = (positions, festerLap) => {
       '.',
       ',',
     );
-    p.totalVelocity = convertNumberToString(p.totalVelocity);
     p.bestLapTime = convertNumberToString(p.bestLapTime);
     p.isFesterLap = festerLap.pilotId === p.pilotId;
 

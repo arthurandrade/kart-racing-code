@@ -13,7 +13,6 @@ Array [
     "timeAfterFirstPilot": "0:0.000",
     "totalLaps": 4,
     "totalTime": "4:11.578",
-    "totalVelocity": "2:56.983",
   },
   Object {
     "avgLapSpeed": "43,627",
@@ -26,7 +25,6 @@ Array [
     "timeAfterFirstPilot": "0:3.575",
     "totalLaps": 4,
     "totalTime": "4:15.153",
-    "totalVelocity": "2:54.509",
   },
   Object {
     "avgLapSpeed": "43,468",
@@ -39,7 +37,6 @@ Array [
     "timeAfterFirstPilot": "0:4.502",
     "totalLaps": 4,
     "totalTime": "4:16.080",
-    "totalVelocity": "2:53.872",
   },
   Object {
     "avgLapSpeed": "43,191",
@@ -52,7 +49,6 @@ Array [
     "timeAfterFirstPilot": "0:6.144",
     "totalLaps": 4,
     "totalTime": "4:17.722",
-    "totalVelocity": "2:52.765",
   },
   Object {
     "avgLapSpeed": "38,066",
@@ -65,7 +61,6 @@ Array [
     "timeAfterFirstPilot": "0:42.643",
     "totalLaps": 4,
     "totalTime": "4:54.221",
-    "totalVelocity": "2:32.265",
   },
   Object {
     "avgLapSpeed": "25,746",
@@ -78,7 +73,6 @@ Array [
     "timeAfterFirstPilot": "2:15.698",
     "totalLaps": 3,
     "totalTime": "6:27.276",
-    "totalVelocity": "1:17.237",
   },
 ]
 `;

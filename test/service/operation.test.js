@@ -79,7 +79,6 @@ describe('testing operations functions', () => {
         timeAfterFirstPilot: '0:0.000',
         totalLaps: 4,
         totalTime: '4:11.578',
-        totalVelocity: '2:56.983',
       },
       {
         avgLapSpeed: '43,627',
@@ -92,7 +91,6 @@ describe('testing operations functions', () => {
         timeAfterFirstPilot: '0:3.575',
         totalLaps: 4,
         totalTime: '4:15.153',
-        totalVelocity: '2:54.509',
       },
       {
         avgLapSpeed: '43,468',
@@ -105,7 +103,6 @@ describe('testing operations functions', () => {
         timeAfterFirstPilot: '0:4.502',
         totalLaps: 4,
         totalTime: '4:16.080',
-        totalVelocity: '2:53.872',
       },
     ]);
   });
@@ -122,7 +119,6 @@ describe('testing operations functions', () => {
       timeAfterFirstPilot: '0:0.000',
       totalLaps: 4,
       totalTime: '4:11.578',
-      totalVelocity: '2:56.983',
     });
   });
 
@@ -137,7 +133,6 @@ describe('testing operations functions', () => {
         pilotName: 'F.MASS',
         totalLaps: 4,
         totalTime: 251.578,
-        totalVelocity: 176.983,
       },
       {
         avgLapSpeed: 43.467999999999996,
@@ -147,7 +142,6 @@ describe('testing operations functions', () => {
         pilotName: 'R.BARRICHELLO',
         totalLaps: 4,
         totalTime: 256.08,
-        totalVelocity: 173.87199999999999,
       },
     ]);
   });
