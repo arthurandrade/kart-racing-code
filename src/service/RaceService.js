@@ -2,7 +2,7 @@ const {
   groupLapsByPilot,
   getResultByPilot,
   sortPilot,
-  formatResult,
+  formatRaceResult,
   getFasterLap,
 } = require('./utils/operation');
 
@@ -18,7 +18,8 @@ module.exports = class RaceService {
   }
 
   save(filePath, data) {
-    this.fileHandler.writeFile(filePath, data);
+    const csvFile = this.fileHandler.buildCsv(data);
+    this.fileHandler.writeFile(filePath, csvFile);
   }
 
   getResult() {
@@ -27,6 +28,6 @@ module.exports = class RaceService {
     const sortedResult = sortPilot(resultLapsByPilot);
     const bestLap = getFasterLap(sortedResult);
 
-    return formatResult(sortedResult, bestLap);
+    return formatRaceResult(sortedResult, bestLap);
   }
 };

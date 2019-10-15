@@ -1,5 +1,5 @@
 const {
-  formatResult,
+  formatRaceResult,
   getFasterLap,
   getResultByPilot,
   groupLapsByPilot,
@@ -66,7 +66,7 @@ describe('testing operations functions', () => {
     ]);
   });
   test('should format result', () => {
-    const formatedResult = formatResult(sortedResults, bestLap);
+    const formatedResult = formatRaceResult(sortedResults, bestLap);
     expect(formatedResult).toEqual([
       {
         avgLapSpeed: '44,246',

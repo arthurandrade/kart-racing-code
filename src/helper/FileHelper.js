@@ -11,13 +11,18 @@ module.exports = class FileHelper {
     return parseLaps(laps);
   }
 
-  writeFile(filePath, content) {
+  writeFile(filePath, data) {
     if (!filePath) throw new NoExistFileError(filePath);
-    const keys =
+
+    writeFileSync(filePath, data, 'utf8');
+  }
+
+  buildCsv(data) {
+    const header =
       'Posição Chegada;Código Piloto;Nome Piloto;Qtde Voltas Completadas;Tempo Total;Melhor Tempo;Melhor Volta;Velocidade Media;' +
       'Diferença Do Vencedor;Possui a volta mais Rápida\n';
 
-    const out = content
+    const lines = data
       .map(result => {
         return (
           `${result.finishPosition};${result.pilotId};${result.pilotName};${result.totalLaps};${result.totalTime};${result.bestLapTime};` +
@@ -26,8 +31,6 @@ module.exports = class FileHelper {
       })
       .join('\n');
 
-    const result = keys + out;
-
-    writeFileSync(filePath, result, 'utf8');
+    return header + lines;
   }
 };

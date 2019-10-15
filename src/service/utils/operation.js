@@ -3,32 +3,38 @@ const { convertNumberToString } = require('../../helper');
 const groupLapsByPilot = laps => {
   const pilots = {};
   for (const lap of laps) {
-    const key = lap.pilotId;
+    const id = lap.pilotId;
 
-    if (pilots[key] === undefined) {
-      pilots[key] = [];
+    if (pilots[id] === undefined) {
+      pilots[id] = [];
     }
 
-    pilots[key].push(lap);
+    pilots[id].push(lap);
   }
 
   return Object.values(pilots);
 };
+const orderAscByLap = (a, b) => {
+  if (a.lap >= b.lap) {
+    return 1;
+  }
 
+  return -1;
+};
 const getResultByPilot = pilots => {
   const results = [];
 
   for (const pilot of pilots) {
-    const bestOfPilot = pilot.reduce(
+    const sortedLaps = pilot.sort(orderAscByLap);
+    const pilotStatistics = sortedLaps.reduce(
       (acc, current) => {
         const { bestLapTime } = acc;
 
         acc.pilotId = current.pilotId;
         acc.pilotName = current.pilotName;
-
         acc.totalTime += current.lapTime;
         acc.totalVelocity += current.velocity;
-        acc.totalLaps += 1;
+        acc.totalLaps = current.lap;
 
         if (current.lapTime < bestLapTime) {
           acc.bestLapTime = current.lapTime;
@@ -40,16 +46,16 @@ const getResultByPilot = pilots => {
       { bestLapTime: Infinity, totalTime: 0, totalLaps: 0, totalVelocity: 0 },
     );
 
-    const { totalVelocity, totalLaps } = bestOfPilot;
-    bestOfPilot.avgLapSpeed = totalVelocity / totalLaps;
-    delete bestOfPilot.totalVelocity;
-    results.push(bestOfPilot);
+    const { totalVelocity, totalLaps } = pilotStatistics;
+    pilotStatistics.avgLapSpeed = totalVelocity / totalLaps;
+    delete pilotStatistics.totalVelocity;
+    results.push(pilotStatistics);
   }
 
   return results;
 };
 
-const defineWinners = (a, b) => {
+const defineWinnersRule = (a, b) => {
   if (a.totalLaps <= b.totalLaps && a.totalTime > b.totalTime) {
     return 1;
   }
@@ -58,12 +64,12 @@ const defineWinners = (a, b) => {
 };
 
 const sortPilot = pilotResult => {
-  const sortedResult = pilotResult.sort(defineWinners);
+  const sortedResult = pilotResult.sort(defineWinnersRule);
 
   return sortedResult;
 };
 
-const formatResult = (positions, festerLap) => {
+const formatRaceResult = (positions, festerLap) => {
   const totalTimeFirstPilot = positions[0].totalTime;
 
   return positions.map((p, index) => {
@@ -71,12 +77,11 @@ const formatResult = (positions, festerLap) => {
     p.timeAfterFirstPilot = convertNumberToString(
       p.totalTime - totalTimeFirstPilot,
     );
-
     p.totalTime = convertNumberToString(p.totalTime);
-    p.avgLapSpeed = convertNumberToString(p.avgLapSpeed, false).replace(
-      '.',
-      ',',
-    );
+    p.avgLapSpeed = p.avgLapSpeed
+      .toFixed(3)
+      .toString()
+      .replace('.', ',');
     p.bestLapTime = convertNumberToString(p.bestLapTime);
     p.isFesterLap = festerLap.pilotId === p.pilotId;
 
@@ -95,5 +100,5 @@ module.exports = {
   getResultByPilot,
   sortPilot,
   getFasterLap,
-  formatResult,
+  formatRaceResult,
 };

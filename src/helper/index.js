@@ -7,18 +7,24 @@ const convertTimeToSeconds = time => {
   return Number(seconds.toFixed(3));
 };
 
+const buildLap = line => {
+  const lap = new Lap(line);
+  lap.lapTime = convertTimeToSeconds(lap.lapTime);
+
+  return lap;
+};
+
+const splitLineInformation = line => {
+  return line.split(/\s–\s|\s+/);
+};
+
 const parseLaps = content => {
   try {
     return content
       .split('\n')
       .splice(1)
-      .map(line => line.split(/\s–\s|\s+/))
-      .map(line => {
-        const lap = new Lap(line);
-        lap.lapTime = convertTimeToSeconds(lap.lapTime);
-
-        return lap;
-      });
+      .map(line => splitLineInformation(line))
+      .map(line => buildLap(line));
   } catch (e) {
     throw e;
   }
